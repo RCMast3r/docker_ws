@@ -6,7 +6,7 @@ if [ -d "~/osqp/" ]
 then
     echo "osqp folder already exists, skipping install" 
 else
-    sudo apt-get install -Y libeigen3-dev
+    sudo apt-get install -y libeigen3-dev
 
     curl -L https://github.com/osqp/osqp/releases/download/v0.6.2/complete_sources.tar.gz | tar -xz -C ~/
     cd ~/osqp
@@ -15,7 +15,7 @@ else
     pwd
     cmake -G "Unix Makefiles" ..
     cmake --build .    
-    cmake --build . --target install
+    sudo cmake --build . --target install
 
     cd ~/
     git clone https://github.com/robotology/osqp-eigen.git
@@ -24,6 +24,6 @@ else
     cd build
     cmake ..
     make
-    make install
+    sudo make install
 
 fi
