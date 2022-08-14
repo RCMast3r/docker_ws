@@ -39,7 +39,7 @@ repositories:
   voltron_mpc:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
-    version: refactor
+    version: dynamic_params
   voltron_simulator:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_simulator.git
