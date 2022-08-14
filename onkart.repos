@@ -1,0 +1,42 @@
+repositories:
+  src/line_maker2:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/line_maker2.git
+    version: master
+  src/pointcloud-to-costmap:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud-to-costmap.git
+    version: ros2
+  src/pointcloud_cone_detection:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud_cone_detection.git
+    version: master
+  src/pure_pursuit:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/pure_pursuit.git
+    version: master
+  src/race_controller:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/race_controller.git
+    version: main
+  src/race_line_maker:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/race-line-maker.git
+    version: slime_trail_cleaner
+    version: master
+  src/velodyne:
+    type: git
+    url: git@github.com:ros-drivers/velodyne.git
+    version: ros2
+  src/voltron:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/voltron.git
+    version: master
+  src/voltron_localization:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_localization.git
+    version: imu_transform_feat
+  src/voltron_mpc:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
+    version: refactor

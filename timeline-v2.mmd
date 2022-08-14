@@ -1,0 +1,62 @@
+gantt
+    title Autonomous timeline (v2)
+    dateFormat  YYYY-MM-DD
+    axisFormat  %y-%m-%d
+    section Software
+    Ground Speed Sensor   :2022-08-04, 60d
+    
+    GSS Simulator : s1, 2022-08-04, 15d
+    GTSAM SLAM : s2, after s1, 60d
+    Localization Filter : s3, after s2, 60d
+
+
+    Dev environment bringup :d1, 2022-08-04, 15d
+    ROS2 Humble switch : d2, after d1, 15d
+    cone detection: d3,  after d2, 30d
+    kart detection: d4, after d3, 60d
+
+    sensor integration : after d4, 60d
+
+
+    Test tooling development :2022-08-04, 15d
+
+    Voltron Simulator refresh :2022-08-04, 30d
+    multi-kart simulator : after d3, 30d
+    Voltron mpc tuning :2022-08-14, 30d
+    Micro-Ros platformio port :2022-08-21, 60d
+
+    f1-tenth : 2022-09-25, 5d
+
+    multi-kart senior project : 2022-12-01, 120d
+    
+    %% embedded hybrid
+    ibooster testing :2022-08-14, 15d
+    PC Batt BMS (ennoid) inte. :2022-09-01, 15d
+    Odrive-PRO integration : 2022-10-01, 30d
+    CPLD bringup :se1, 2022-10-01, 30d
+    SCU bringup : after se1, 30d
+
+
+    section Electrical
+    f1-tenth : 2022-09-25, 5d
+
+    %% embedded hybrid
+    ibooster testing :2022-08-14, 15d
+    PC Batt BMS (ennoid) inte. :e1, 2022-09-01, 15d
+    Odrive-PRO integration : e2, 2022-10-01, 30d
+    CPLD bringup :e3, 2022-10-01, 30d
+    SCU bringup : after e3, 30d
+
+    electrical re-design : e1, 2022-08-04, 150d
+    harness re-make: after e1, 20d
+    
+
+    section Mechanical
+    f1-tenth : 2022-09-25, 5d
+
+    iBooster integration : m1, 2022-08-15, 30d
+    steering study : m2, after m1, 30d
+    steering refresh : after m2, 30d
+    mounting new PC : m3, 2022-09-01, 30d
+    new PC battery box : m4, after m3, 30d
+    main electronics box : 2022-12-01, 20d
