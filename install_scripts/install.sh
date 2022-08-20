@@ -2,4 +2,4 @@
 
 set -e
 
-echo placeholder
+./installAptDeps_humble.sh

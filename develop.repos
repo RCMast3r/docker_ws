@@ -40,3 +40,8 @@ repositories:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/gokart-simulation.git
     version: main
+  src/voltron_mpc:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
+    version: master
+  

@@ -9,7 +9,3 @@ sudo apt install -y ros-humble-diagnostic-updater
 sudo apt install -y libopencv-dev python3-opencv
 sudo apt install -y libpcap-dev
 sudo apt install -y libyaml-cpp-dev
-sudo apt install -y python3-vcstool
-sudo apt install -y python3-colcon-common-extensions
-sudo apt install -y python3-rosdep
-sudo apt install -y python3-pip
