@@ -17,3 +17,13 @@ In the repo/workspace root, run:
 TODO add step to run the install script
 
 NOTE: for vscode users: by default, vscode's source monitoring does not handle the repos as sub-directories very well. To get around this and to view the status of all of the repos at once in the `src/` dir, shrimply use `vcs status src/` within the workspace directory.
+
+in addition, if you would like to un-grayify the folders that appear in the `.gitignore`, put this in your workbench color customization:
+```
+"workbench.colorCustomizations": {
+    "gitDecoration.ignoredResourceForeground": "#cccccc"
+}
+```
+
+IMPORTANT for VSCODE users: to include contents in the ignored directories in vscode, uncheck the option in 
+`Settings->Features->Explorer->"Exclude Git Ignore"`
