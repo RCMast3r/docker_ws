@@ -13,7 +13,7 @@ In the repo/workspace root, run:
 2)
 `vcs import < onkart.repos # if being used on the kart`
 OR
-`vcs import < onkart.repos # if being used on the kart`
+`vcs import < develop.repos # if being used on personal machine`
 
 
 3)
