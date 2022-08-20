@@ -26,4 +26,5 @@ in addition, if you would like to un-grayify the folders that appear in the `.gi
 ```
 
 IMPORTANT for VSCODE users: to include contents in the ignored directories in vscode, uncheck the option in 
+
 `Settings->Features->Explorer->"Exclude Git Ignore"`
