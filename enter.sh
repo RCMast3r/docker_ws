@@ -26,7 +26,8 @@ if [[ -f "${WORK_DIR}/run.pid" ]]; then
     fi
 
     if [[ ! -z "$(docker ps -a -f name=$CONTAINER_NAME -q)" ]]; then
-        docker stop "$(docker ps -a -f name=$CONTAINER_NAME -q)"
+        echo "Warning: environment didn't shutdown cleanly"
+        docker stop "$(docker ps -a -f name=$CONTAINER_NAME -q)" >/dev/null 2>&1
     fi
 fi
 
