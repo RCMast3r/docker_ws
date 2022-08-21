@@ -64,6 +64,7 @@ RUN apt-get update && \
 " >"$Tmpdir/Dockerfile"
 
 echo "Creating docker image $Imagename"
+export DOCKER_BUILDKIT=1
 # we can't copy files from outside the docker build context
 Buildcmd="docker build -t $Imagename -f $Tmpdir/Dockerfile $Scriptdir"
 echo "$Buildcmd"
