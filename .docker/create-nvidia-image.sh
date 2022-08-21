@@ -47,7 +47,7 @@ else
   echo "Found driver at $Savefile"
 fi
 
-Tmpdir="/tmp/evt-dev-nvidia-dev"
+Tmpdir="/tmp/ros-humble-dev-nvidia-build"
 mkdir -p "$Tmpdir"
 
 echo "# Dockerfile to create NVIDIA driver dev image $Imagename
