@@ -50,7 +50,7 @@ echo -n "Launching image..."
 LAUNCH_COMMAND="x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
     --clipboard -l --sudouser=nopasswd -I --network \
     -m --share=$HOME --share=$SCRIPT_DIR --share=$HOME/.ssh \
-    --workdir=$HOME/$(basename $SCRIPT_DIR) --name=$CONTAINER_NAME \
+    --workdir=$SCRIPT_DIR --name=$CONTAINER_NAME \
     -- -h ros-dev --privileged -- \
     $CONTAINER_IMAGE"
 nohup $LAUNCH_COMMAND > $WORK_DIR/run.output 2>&1 &
