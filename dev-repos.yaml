@@ -32,6 +32,10 @@ repositories:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_localization.git
     version: imu_transform_feat
+  src/gokart-simulation:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/gokart-simulation.git
+    version: main
   src/voltron_mpc:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
