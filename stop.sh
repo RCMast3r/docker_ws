@@ -15,6 +15,7 @@ if [[ -d "${WORK_DIR}" && -f "${WORK_DIR}/run.pid" ]]; then
             sleep 0.2
             echo -n "."
         done
+        rm ${WORK_DIR}/*
         echo ""
         exit 0
     fi
