@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
                      mesa-utils mesa-utils-extra vainfo \
                      libxv1 va-driver-all vdpau-driver-all \
                      ros-humble-desktop python3-vcstool python3-rosdep python3-colcon-common-extensions \
-                     sudo git iputils-ping neovim ssh
+                     sudo git iputils-ping neovim ssh python3-pip
 
 # Workspace dependencies
 COPY . /tmp/voltron_ws
