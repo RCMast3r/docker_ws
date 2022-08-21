@@ -24,10 +24,6 @@ repositories:
     url: git@gitlab.com:KSU_EVT/autonomous-software/race-line-maker.git
     version: slime_trail_cleaner
     version: master
-  src/velodyne:
-    type: git
-    url: git@github.com:ros-drivers/velodyne.git
-    version: ros2
   src/voltron:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron.git
@@ -39,20 +35,4 @@ repositories:
   src/voltron_mpc:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
-    version: dynamic_params
-  src/micro_ros_setup:
-    type: git
-    url: https://github.com/micro-ROS/micro_ros_setup.git
-    version: galactic
-  src/uros/drive_base:
-    type: git
-    url: https://github.com/micro-ROS/drive_base.git
     version: master
-  src/uros/micro-ROS-Agent:
-    type: git
-    url: https://github.com/micro-ROS/micro-ROS-Agent.git
-    version: galactic
-  src/uros/micro_ros_msgs:
-    type: git
-    url: https://github.com/micro-ROS/micro_ros_msgs.git
-    version: galactic
