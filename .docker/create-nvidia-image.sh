@@ -19,7 +19,6 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 Scriptdir=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
-Wsdir=$(readlink -f $Scriptdir)
 
 Savedir="$Scriptdir/nvidia-drivers"
 [[ ! -d "$Savedir" ]] && mkdir "$Savedir"
@@ -53,7 +52,7 @@ mkdir -p "$Tmpdir"
 
 echo "# Dockerfile to create NVIDIA driver dev image $Imagename
 FROM ksuevt/ros-humble-dev:latest
-COPY .docker/nvidia-drivers/NVIDIA-Linux-x86_64-$Nvidiaversion.run /tmp/NVIDIA-installer.run
+COPY nvidia-drivers/NVIDIA-Linux-x86_64-$Nvidiaversion.run /tmp/NVIDIA-installer.run
 RUN apt-get update && \
     apt-get install --no-install-recommends -y kmod xz-utils wget ca-certificates binutils || exit 1 ; \
     Nvidiaoptions='--accept-license --no-runlevel-check --no-questions --no-backup --ui=none --no-kernel-module --no-nouveau-check' ; \
@@ -66,7 +65,9 @@ RUN apt-get update && \
 
 echo "Creating docker image $Imagename"
 # we can't copy files from outside the docker build context
-docker build -t $Imagename -f $Tmpdir/Dockerfile $Wsdir || {
+Buildcmd="docker build -t $Imagename -f $Tmpdir/Dockerfile $Scriptdir"
+echo "$Buildcmd"
+$Buildcmd || {
   echo "Error: Failed to build image $Imagename.
   Check possible build error messages above.
   Make sure that you have permission to start docker.
