@@ -49,7 +49,7 @@ fi
 
 echo -n "Launching image..."
 LAUNCH_COMMAND="x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
-    --clipboard -l --sudouser=nopasswd -I --network \
+    --clipboard -l --sudouser=nopasswd --network=host \
     -m --share=$HOME --share=$SCRIPT_DIR --share=$HOME/.ssh \
     --workdir=$SCRIPT_DIR --name=$CONTAINER_NAME \
     -- -h ros-dev --privileged -- \
