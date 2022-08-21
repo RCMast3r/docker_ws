@@ -24,12 +24,11 @@ Wsdir=$(readlink -f $Scriptdir)
 Savedir="$Scriptdir/nvidia-drivers"
 [[ ! -d "$Savedir" ]] && mkdir "$Savedir"
 
-#Nvidiaversion="$(head -n1 </proc/driver/nvidia/version | awk '{ print $8 }')"
-#[ "$Nvidiaversion" ] || {
-#  echo "Error: No NVIDIA driver detected on host" >&2
-#  exit 1
-#}
-Nvidiaversion="515.65.01"
+Nvidiaversion="$(head -n1 </proc/driver/nvidia/version | awk '{ print $8 }')"
+[ "$Nvidiaversion" ] || {
+  echo "Error: No NVIDIA driver detected on host" >&2
+  exit 1
+}
 echo "Detected NVIDIA driver version: $Nvidiaversion"
 
 # Cache downloaded driver file in case of rebuilds (base image changes)
