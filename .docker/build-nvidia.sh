@@ -59,10 +59,8 @@ $Buildcmd || {
   Check possible build error messages above.
   Make sure that you have permission to start docker.
   Make sure docker daemon is running." >&2
-  rm -R "$Tmpdir"
   exit 1
 }
 
 echo "Successfully created $Imagename"
-rm -R "$Tmpdir"
 exit 0
