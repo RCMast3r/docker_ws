@@ -41,15 +41,12 @@ if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
     WAYLAND_OPTION="--hostwayland"
 fi
 
-CONTAINER_IMAGE="ksuevt/ros-humble-dev"
-if [[ -f "/proc/driver/nvidia/version" ]]; then
-    bash $SCRIPT_DIR/.docker/create-nvidia-image.sh
-    CONTAINER_IMAGE="ksuevt/ros-humble-dev-nvidia"
-fi
+CONTAINER_IMAGE="ksuevt/ros-humble-dev-local"
+bash $SCRIPT_DIR/.docker/build-local.sh
 
 echo -n "Launching image..."
 LAUNCH_COMMAND="x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
-    --clipboard -l --sudouser=nopasswd --network=host \
+    --clipboard -l --sudouser=nopasswd --network=host --group-add=video --group-add=render \
     -m --share=$HOME --share=$SCRIPT_DIR --share=$HOME/.ssh \
     --workdir=$SCRIPT_DIR --name=$CONTAINER_NAME \
     -- -h ros-dev --privileged -- \
