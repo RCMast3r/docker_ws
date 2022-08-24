@@ -22,4 +22,4 @@ if [[ -f /proc/driver/nvidia/version ]]; then
 fi
 
 docker build --build-arg BASE_IMAGE=$DEV_BASE_IMAGE \
-    -t ksuevt/ros-humble-local -f .docker/dev-local.Dockerfile .
+    -t ksuevt/ros-humble-dev-local -f .docker/dev-local.Dockerfile .

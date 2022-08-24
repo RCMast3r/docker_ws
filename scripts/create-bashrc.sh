@@ -2,6 +2,7 @@
 
 if [[ -f $HOME/.bashrc ]]; then
     echo "~/.bashrc already exists! If you want to overwrite ~/.bashrc, rename or delete it, then rerun this script."
+    exit 1
 fi
 
 cat <<'EOF' > $HOME/.bashrc
