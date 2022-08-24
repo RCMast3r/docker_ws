@@ -11,5 +11,5 @@ RUN apt-get update && \
     sh /tmp/NVIDIA-installer.run -A | grep -q -- '--install-libglvnd'        && Nvidiaoptions="$Nvidiaoptions --install-libglvnd" ; \
     sh /tmp/NVIDIA-installer.run -A | grep -q -- '--no-nvidia-modprobe'      && Nvidiaoptions="$Nvidiaoptions --no-nvidia-modprobe" ; \
     sh /tmp/NVIDIA-installer.run -A | grep -q -- '--no-kernel-module-source' && Nvidiaoptions="$Nvidiaoptions --no-kernel-module-source" ; \
-    sh /tmp/NVIDIA-installer.run \$Nvidiaoptions || { echo 'ERROR: Installation of NVIDIA driver failed.' >&2 ; exit 1 ; } ; \
+    sh /tmp/NVIDIA-installer.run $Nvidiaoptions || { echo 'ERROR: Installation of NVIDIA driver failed.' >&2 ; exit 1 ; } ; \
     rm /tmp/NVIDIA-installer.run
