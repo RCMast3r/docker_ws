@@ -4,27 +4,53 @@ NOTE: ALWAYS MAKE SURE TO BUILD FOR RELEASE WHEN ACTUALLY USING THIS BOI (@Sahan
 
 ### First-time Setup
 
-In the repo/workspace root, run:
+# EVT dockerized dev environment (nvidia)
 
+pre-reqs:
 
-1) `source /opt/ros/galactic/setup.bash`
+must be within a linux environment.
+###step 0:
 
-2) `vcs import < onkart.repos # if being used on the kart` OR `vcs import < develop.repos # if being used on personal machine`
-
-
-3) `rosdep install -i --from-paths src -y`
-
-TODO add step to run the install script
-
-NOTE: for vscode users: by default, vscode's source monitoring does not handle the repos as sub-directories very well. To get around this and to view the status of all of the repos at once in the `src/` dir, shrimply use `vcs status src/` within the workspace directory.
-
-in addition, if you would like to un-grayify the folders that appear in the `.gitignore`, put this in your workbench color customization:
+1 install x11docker:
 ```
-"workbench.colorCustomizations": {
-    "gitDecoration.ignoredResourceForeground": "#cccccc"
-}
+curl -fsSL https://raw.githubusercontent.com/mviereck/x11docker/master/x11docker | sudo bash -s -- --update
+```
+if using an nvidia gpu:
+2 [install nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit)
+
+-----
+NOTE if using Pop-OS see this issue comment: https://github.com/NVIDIA/nvidia-docker/issues/1388#issuecomment-1182634769
+
+as Pop-OS doesnt handle the packaging of nvidia-docker2 correctly and you will have to add a preference manually
+
+-----
+
+3 if not using a pre-built docker image:
+
+```
+$ ./.docker/build-all.sh 
 ```
 
-IMPORTANT for VSCODE users: to include contents in the ignored directories in vscode, uncheck the option in 
+####steps 1 through 5:
+1. to enter the built docker image: 
+```
+$ ./enter.sh
+```
 
-`Settings->Features->Explorer->"Exclude Git Ignore"`
+2. on first startup, run the following within the docker container bash prompt:
+```
+$ ./create-bashrc.sh
+```
+
+3. to stop the built docker image:
+```
+$ ./stop.sh
+```
+
+dependency note: 
+
+All of the dependencies for the environment are captured by either a `package.xml` or an install script within the `scripts/` folder. 
+
+In addition, the docker container is not persistent and anything installed by the user will not stay installed once the container is stopped. Anything you do not want to capture in either a packages `package.xml` or the `install-non-ros-deps.sh` script can be held in the `install-local.sh` script in the `scripts/` folder.
+
+> for example, say you want to use `nano` in the container, in the `install-local.sh` add the line `sudo apt-get install -y nano`
