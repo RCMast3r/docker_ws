@@ -24,9 +24,7 @@ NOTE if using Pop-OS see this issue comment: https://github.com/NVIDIA/nvidia-do
 as Pop-OS doesnt handle the packaging of nvidia-docker2 correctly and you will have to add a preference manually
 
 -----
-
 3 if not using a pre-built docker image:
-
 ```
 $ ./.docker/build-all.sh 
 ```
