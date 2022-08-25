@@ -31,7 +31,7 @@ as Pop-OS doesnt handle the packaging of nvidia-docker2 correctly and you will h
 $ ./.docker/build-all.sh 
 ```
 
-####steps 1 through 5:
+#### steps 1 through 5:
 1. to enter the built docker image: 
 ```
 $ ./enter.sh
