@@ -9,7 +9,7 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   SOURCE=$(readlink "$SOURCE")
   [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
-SCRIPT_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+WS_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
 WORK_DIR="${TMPDIR:-/tmp}/$CONTAINER_NAME"
 if [[ ! -d "${WORK_DIR}" ]]; then
@@ -42,13 +42,13 @@ if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
 fi
 
 CONTAINER_IMAGE="ksuevt/ros-humble-dev-local"
-bash $SCRIPT_DIR/.docker/build-local.sh
+bash $WS_DIR/.docker/build-local.sh
 
 echo -n "Launching image..."
-LAUNCH_COMMAND="x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
+LAUNCH_COMMAND="bash $WS_DIR/scripts/x11docker/x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
     --clipboard -l --sudouser=nopasswd --network=host --group-add=video --group-add=render \
-    -m --share=$HOME --share=$SCRIPT_DIR --share=$HOME/.ssh \
-    --workdir=$SCRIPT_DIR --name=$CONTAINER_NAME \
+    -m --share=$HOME --share=$WS_DIR --share=$HOME/.ssh \
+    --workdir=$WS_DIR --name=$CONTAINER_NAME \
     -- -h ros-dev --privileged -- \
     $CONTAINER_IMAGE"
 nohup $LAUNCH_COMMAND > $WORK_DIR/run.output 2>&1 &

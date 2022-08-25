@@ -2,34 +2,35 @@ workspace repo for working on Voltron
 
 NOTE: ALWAYS MAKE SURE TO BUILD FOR RELEASE WHEN ACTUALLY USING THIS BOI (@Sahan)
 
-### First-time Setup
-
 # EVT dockerized dev environment (nvidia)
 
 pre-reqs:
 
 must be within a linux environment.
-###step 0:
 
-1 install x11docker:
+### step 0:
+
+1 clone with:
 ```
-curl -fsSL https://raw.githubusercontent.com/mviereck/x11docker/master/x11docker | sudo bash -s -- --update
+$ git clone --recurse-submodules git@gitlab.com:KSU_EVT/autonomous-software/voltron_ws.git
 ```
-if using an nvidia gpu:
+
+ONLY if using an nvidia gpu: (otherwise skip)
+
 2 [install nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit)
 
 -----
 NOTE if using Pop-OS see this issue comment: https://github.com/NVIDIA/nvidia-docker/issues/1388#issuecomment-1182634769
 
 as Pop-OS doesnt handle the packaging of nvidia-docker2 correctly and you will have to add a preference manually
-
 -----
+
 3 if not using a pre-built docker image:
 ```
 $ ./.docker/build-all.sh 
 ```
 
-#### steps 1 through 5:
+#### steps 1 through 3:
 1. to enter the built docker image: 
 ```
 $ ./enter.sh
