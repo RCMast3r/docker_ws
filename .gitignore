@@ -4,3 +4,4 @@ build/
 install/
 log/
 .docker/nvidia-drivers
+scripts/install-local.sh
