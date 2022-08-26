@@ -1,37 +1,45 @@
 gantt
-    title Autonomous timeline (v2)
+    title Autonomous timeline (v3)
     dateFormat  YYYY-MM-DD
     axisFormat  %y-%m-%d
     section Software
-    Ground Speed Sensor   :2022-08-04, 60d
-    
-    GSS Simulator : s1, 2022-08-04, 15d
-    GTSAM SLAM : s2, after s1, 60d
-    Localization Filter : s3, after s2, 60d
-
-
-    Dev environment bringup :d1, 2022-08-04, 15d
-    ROS2 Humble switch : d2, after d1, 15d
-    cone detection: d3,  after d2, 30d
-    kart detection: d4, after d3, 60d
-
-    sensor integration : after d4, 60d
-
-
-    Test tooling development :2022-08-04, 15d
-
+    (ON HOLD)Micro-Ros platformio port :2022-08-21, 60d
     Voltron Simulator refresh :2022-08-04, 30d
-    multi-kart simulator : after d3, 30d
-    Voltron mpc tuning :2022-08-14, 30d
-    Micro-Ros platformio port :2022-08-21, 60d
+    paper : 2022-8-26, 7d
+    orientation fix RTK gps : rtk, 2022-8-26, 2d
+    VNC local dev env. bringup : vnc-local, 2022-8-26, 7d
+    Voltron mpc tuning : mpc, after rtk, 30d
+    
+    VNC remote dev env. bringup : after vnc-local, 15d
+
+    
+
+    
+    GTSAM SLAM : slam, after mpc, 60d
+
+    cone detection: cd, after mpc, 30d
+    multi-kart simulator : after mpc, 30d
+    Ground Speed Sensor   :gss, after cd, 60d
+    
+    GSS Simulator : gss-sim, after cd, 15d
+    
+    Localization sensor fusion : sf, after cd, 120d
+    
+
+    kart detection: d4, after gss, 60d
+
+
+    
+    
+    
 
     f1-tenth : 2022-09-25, 5d
 
     multi-kart senior project : 2022-12-01, 120d
     
     %% embedded hybrid
-    ibooster testing :2022-08-14, 15d
-    PC Batt BMS (ennoid) inte. :2022-09-01, 15d
+    ibooster testing :2022-09-09, 15d
+    PC Batt BMS (ennoid) inte. :2022-08-26, 15d
     Odrive-PRO integration : 2022-10-01, 30d
     CPLD bringup :se1, 2022-10-01, 30d
     SCU bringup : after se1, 30d
@@ -41,7 +49,7 @@ gantt
     f1-tenth : 2022-09-25, 5d
 
     %% embedded hybrid
-    ibooster testing :2022-08-14, 15d
+    ibooster testing :2022-09-09, 15d
     PC Batt BMS (ennoid) inte. :e1, 2022-09-01, 15d
     Odrive-PRO integration : e2, 2022-10-01, 30d
     CPLD bringup :e3, 2022-10-01, 30d
