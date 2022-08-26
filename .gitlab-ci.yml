@@ -1,31 +1,43 @@
-image: docker:20.10.16
+stages:
+  - build
 
+# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
 variables:
-  # When you use the dind service, you must instruct Docker to talk with
-  # the daemon started inside of the service. The daemon is available
-  # with a network connection instead of the default
-  # /var/run/docker.sock socket. Docker 19.03 does this automatically
-  # by setting the DOCKER_HOST in
-  # https://github.com/docker-library/docker/blob/d45051476babc297257df490d22cbd806f1b11e4/19.03/docker-entrypoint.sh#L23-L29
-  #
-  # The 'docker' hostname is the alias of the service container as described at
-  # https://docs.gitlab.com/ee/ci/services/#accessing-the-services.
-  #
-  # Specify to Docker where to create the certificates. Docker
-  # creates them automatically on boot, and creates
-  # `/certs/client` to share between the service and job
-  # container, thanks to volume mount from config.toml
   DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_BUILDKIT: "1"
+  BUILDKIT_PROGRESS: "plain"
+  SSH_PRIVATE_KEY: $SSH_PRIVATE_KEY # base64 encoded
 
-services:
-  - docker:20.10.16-dind
+default:
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - docker info
 
-before_script:
-  - docker info
-  - docker run --rm hello-world
+    # https://docs.gitlab.com/ee/ci/ssh_keys/
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - mkdir -p ~/.ssh
 
-#build:
-#  stage: build
-#  script:
-#    - docker build -t my-docker-image .
-#    - docker run my-docker-image /script/to/run/tests
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
+    - chmod 700 ~/.ssh
+
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+    - ssh-keyscan github.com >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+
+build:
+  stage: build
+  variables:
+    IMAGE_NAME_BASE: "registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws"
+  script:
+    - IMAGE_BASE="$IMAGE_NAME_BASE/ros-base"
+    - IMAGE_DEV="$IMAGE_NAME_BASE/ros-dev"
+    - docker build --ssh default -t $IMAGE_BASE:latest -t $IMAGE_BASE:humble -t $IMAGE_BASE:$CI_COMMIT_SHORT_SHA -f .docker/base.Dockerfile .
+    - docker build --ssh default -t $IMAGE_DEV:latest -t $IMAGE_DEV:humble -t $IMAGE_DEV:$CI_COMMIT_SHORT_SHA -f .docker/dev.Dockerfile .
+    - docker push --all-tags $IMAGE_BASE
+    - docker push --all-tags $IMAGE_DEV
