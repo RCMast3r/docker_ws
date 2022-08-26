@@ -41,7 +41,7 @@ if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
     WAYLAND_OPTION="--hostwayland"
 fi
 
-CONTAINER_IMAGE="ksuevt/ros-humble-dev-local"
+CONTAINER_IMAGE="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws/ros-dev-local"
 bash $WS_DIR/.docker/build-local.sh
 
 echo -n "Launching image..."
