@@ -53,3 +53,18 @@ All of the dependencies for the environment are captured by either a `package.xm
 In addition, the docker container is not persistent and anything installed by the user will not stay installed once the container is stopped. Anything you do not want to capture in either a packages `package.xml` or the `install-non-ros-deps.sh` script can be held in the `install-local.sh` script in the `scripts/` folder.
 
 > for example, say you want to use `nano` in the container, in the `install-local.sh` add the line `sudo apt-get install -y nano`
+
+-----
+NOTE: for vscode users: by default, vscode's source monitoring does not handle the repos as sub-directories very well. To get around this and to view the status of all of the repos at once in the `src/` dir, shrimply use `vcs status src/` within the workspace directory.
+
+in addition, if you would like to un-grayify the folders that appear in the `.gitignore`, put this in your workbench color customization:
+```
+"workbench.colorCustomizations": {
+    "gitDecoration.ignoredResourceForeground": "#cccccc"
+}
+```
+
+IMPORTANT for VSCODE users: to include contents in the ignored directories in vscode, uncheck the option in 
+
+`Settings->Features->Explorer->"Exclude Git Ignore"`
+-----
