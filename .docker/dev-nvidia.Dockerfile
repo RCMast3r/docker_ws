@@ -1,5 +1,5 @@
-## -*- dockerfile-image-name: "ksuevt/ros-humble-dev-local" -*-
-FROM ksuevt/ros-humble-dev
+ARG IMAGE_NAME_BASE="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws"
+FROM $IMAGE_NAME_BASE/ros-dev
 SHELL ["/bin/bash", "-c"]
 ARG DEBIAN_FRONTEND=noninteractive
 

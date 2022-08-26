@@ -25,7 +25,7 @@ install_osqp() {
     cd build
     pwd
     cmake -G "Unix Makefiles" ..
-    cmake --build . -j$(( $(nproc) - 1 ))
+    cmake --build . -j$(nproc)
     sudo cmake --build . --target install
 }
 
@@ -42,7 +42,7 @@ install_osqp_eigen() {
     mkdir build
     cd build
     cmake ..
-    make -j$(( $(nproc) - 1 ))
+    make -j$(nproc)
     sudo make install
 }
 

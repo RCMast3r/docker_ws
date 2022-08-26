@@ -1,4 +1,3 @@
-## -*- dockerfile-image-name: "ksuevt/ros-humble-base" -*-
 FROM ubuntu:22.04
 SHELL ["/bin/bash", "-c"]
 ARG DEBIAN_FRONTEND=noninteractive
