@@ -46,10 +46,10 @@ bash $WS_DIR/.docker/build-local.sh
 
 echo -n "Launching image..."
 LAUNCH_COMMAND="bash $WS_DIR/scripts/x11docker/x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
-    --clipboard -l --sudouser=nopasswd --network=host --group-add=video --group-add=render \
+    --clipboard -l --sudouser=nopasswd --network=host \
     -m --share=$HOME --share=$WS_DIR --share=$HOME/.ssh \
     --workdir=$WS_DIR --name=$CONTAINER_NAME \
-    -- -h ros-dev --privileged -- \
+    -- -h ros-dev --privileged --add-host=ros-dev:127.0.1.1 -- \
     $CONTAINER_IMAGE"
 nohup $LAUNCH_COMMAND > $WORK_DIR/run.output 2>&1 &
 LAUNCH_PID="$!"
