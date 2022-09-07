@@ -3,7 +3,7 @@
 # Script to build image ksuevt/ros-humble-dev-nvidia
 # containing NVIDIA driver version matching the one on host.
 
-Imagename="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws/ros-dev-nvidia"
+Imagename="voltron_ws_local/ros-dev-nvidia"
 
 if [[ -z "$(which curl)" ]]; then
   echo "curl command not found!"

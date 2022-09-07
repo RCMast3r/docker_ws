@@ -15,12 +15,11 @@ WS_DIR=$(readlink -f "$SCRIPT_DIR/..")
 cd $WS_DIR
 
 export DOCKER_BUILDKIT=1 # we need the docker buildkit ssh feature
-IMAGE_NAME_BASE="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws"
-DEV_BASE_IMAGE="$IMAGE_NAME_BASE/ros-dev"
+DEV_BASE_IMAGE="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws/ros-dev"
 if [[ -f /proc/driver/nvidia/version ]]; then
   bash $WS_DIR/.docker/build-nvidia.sh
-  DEV_BASE_IMAGE="$IMAGE_NAME_BASE/ros-dev-nvidia"
+  DEV_BASE_IMAGE="voltron_ws_local/ros-dev-nvidia"
 fi
 
 docker build --build-arg BASE_IMAGE=$DEV_BASE_IMAGE \
-    -t $IMAGE_NAME_BASE/ros-dev-local -f .docker/dev-local.Dockerfile . --no-cache
+    -t voltron_ws_local/ros-dev-local -f .docker/dev-local.Dockerfile . --no-cache
