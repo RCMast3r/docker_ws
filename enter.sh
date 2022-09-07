@@ -48,9 +48,15 @@ if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
     WAYLAND_OPTION="--hostwayland"
 fi
 
-CONTAINER_IMAGE="registry.gitlab.com/ksu_evt/autonomous-software/voltron_ws/ros-dev-local"
+if [[ "$(docker images -q voltron_ws_local/ros-dev:latest 2> /dev/null)" == "" ]]; then
+  # The image doesn't exist locally
+  echo "Can't find image voltron_ws_local/ros-dev:latest locally."
+  echo "Make sure to run update.sh at least once before running enter.sh."
+  exit 1
+fi
 bash $WS_DIR/.docker/build-local.sh
 
+CONTAINER_IMAGE="voltron_ws_local/ros-dev-local"
 echo -n "Launching image..."
 LAUNCH_COMMAND="bash $WS_DIR/scripts/x11docker/x11docker -D $WAYLAND_OPTION --hostdisplay --gpu --ipc=host \
     --clipboard -l --sudouser=nopasswd --network=host \
