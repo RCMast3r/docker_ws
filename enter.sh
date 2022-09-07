@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+if [[ $EUID == 0 ]]; then
+  echo "Detected root, aborting!"
+  echo "You should run this script as your normal user, not as root"
+  echo "This requires adding your user to the docker group (https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user)"
+  exit 1
+fi
+
 CONTAINER_NAME="ros-humble-dev"
 
 # From https://stackoverflow.com/a/246128
