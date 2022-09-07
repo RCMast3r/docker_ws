@@ -5,6 +5,16 @@ if [[ -f $HOME/.bashrc ]]; then
     exit 1
 fi
 
+# From https://stackoverflow.com/a/246128
+SOURCE=${BASH_SOURCE[0]}
+while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+WS_DIR=$(readlink -f "$WS_DIR/..")
+
 cat <<'EOF' > $HOME/.bashrc
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -112,6 +122,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 source /opt/ros/humble/setup.bash
-[[ -f $HOME/voltron_ws/install/setup.bash ]] && source $HOME/voltron_ws/install/setup.bash
-
 EOF
+
+echo "[[ -f $WS_DIR ]] && source $WS_DIR/install/setup.bash" >> $HOME/.bashrc
