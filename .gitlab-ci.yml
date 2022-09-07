@@ -39,5 +39,5 @@ build:
     - IMAGE_DEV="$IMAGE_NAME_BASE/ros-dev"
     - docker build --ssh default -t $IMAGE_BASE:latest -t $IMAGE_BASE:humble -t $IMAGE_BASE:$CI_COMMIT_SHORT_SHA -f .docker/base.Dockerfile .
     - docker build --ssh default -t $IMAGE_DEV:latest -t $IMAGE_DEV:humble -t $IMAGE_DEV:$CI_COMMIT_SHORT_SHA -f .docker/dev.Dockerfile .
-    - docker push --all-tags $IMAGE_BASE
-    - docker push --all-tags $IMAGE_DEV
+    - if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then docker push --all-tags $IMAGE_BASE; fi
+    - if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then docker push --all-tags $IMAGE_DEV; fi
