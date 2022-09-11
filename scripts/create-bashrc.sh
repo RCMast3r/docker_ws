@@ -124,4 +124,4 @@ fi
 source /opt/ros/humble/setup.bash
 EOF
 
-echo "[[ -f $WS_DIR ]] && source $WS_DIR/install/setup.bash" >> $HOME/.bashrc
+echo "[[ -f $WS_DIR/install/setup.bash ]] && source $WS_DIR/install/setup.bash" >> $HOME/.bashrc
