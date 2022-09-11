@@ -13,7 +13,7 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
 SCRIPT_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
-WS_DIR=$(readlink -f "$WS_DIR/..")
+WS_DIR=$(builtin cd "$SCRIPT_DIR/.."; pwd)
 
 cat <<'EOF' > $HOME/.bashrc
 
