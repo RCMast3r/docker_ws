@@ -62,7 +62,7 @@ LAUNCH_COMMAND="bash $WS_DIR/scripts/x11docker/x11docker -D $WAYLAND_OPTION --ho
     --clipboard -l --sudouser=nopasswd --network=host \
     -m --share=$HOME --share=$WS_DIR --share=$HOME/.ssh \
     --workdir=$WS_DIR --name=$CONTAINER_NAME \
-    -- -h ros-dev --privileged --add-host=ros-dev:127.0.1.1 -- \
+    -- -h ros-dev --privileged -v /dev:/dev --add-host=ros-dev:127.0.1.1 -- \
     $CONTAINER_IMAGE"
 nohup $LAUNCH_COMMAND > $WORK_DIR/run.output 2>&1 &
 LAUNCH_PID="$!"
