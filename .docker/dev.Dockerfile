@@ -14,6 +14,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
                      ros-humble-desktop python3-vcstool python3-rosdep python3-colcon-common-extensions \
                      sudo git iputils-ping neovim ssh python3-pip
 
+# Python dependencies for the simulator
+RUN pip install numpy-stl argparse pynput
+
 # Workspace dependencies
 COPY . /tmp/voltron_ws
 RUN mkdir -p -m 0700 ~/.ssh && \
