@@ -18,12 +18,12 @@ mkdir .ssh && cd .ssh
 ```
 - Once you are in there, generate an ssh key with this command
 ```bash
-ssh-keygen
+ssh-keygen -b 4096
 ```
 > **NOTE:** Be sure you name it with the default key ID for your OS ('id_rsa' for Ubuntu 22.04)
-- Run this command to output the contents of that ssh key we just created
+- Run this command to output the contents of the public key of ssh keypair we just created
 ```bash
-cat NAME_OF_YOUR_KEY_FILE
+cat NAME_OF_YOUR_KEY_FILE.pub
 ```
 - Copy that output, then go to gitlab.com > Preferences > SSH keys
 - Paste the key there, create a name for it, and save it
@@ -62,10 +62,10 @@ cd voltron_ws
 - Therefore, you have to add yourself to the docker group
 - Run this command:
 ```bash
-sudo usermod -aG docker YOUR_USER_NAME
+echo "$(whoami)" | xargs sudo usermod -aG docker
 ```
 - Log out then log back in so the group changes take effect
->**NOTE:** If you don't feel like logging out, you can just run `newgrp docker`, but you'll have to do that every time you open a new terminal window. 
+>**NOTE:** If you don't feel like logging out, you can just run `newgrp docker`, but you'll have to do that every time you open a new terminal window.
 
 - When in the workspace directory, type this command to build and run the container:
 ```bash
@@ -83,14 +83,27 @@ sudo usermod -aG docker YOUR_USER_NAME
 ```bash
 ./scripts/create-bashrc.sh
 ```
+<details>
+<summary>If you get "~/.bashrc already exists!":</summary>
+<br>
+
+We must generate your new `.bashrc` with the script, then append the contents of your old `.bashrc` to the new file:
+```bash
+mv ~/.bashrc ~/.bashrc.old
+./create-bashrc.sh
+cat ~/.bashrc.old >> ~/.bashrc
+```
+</details>
 
 - This will color your terminal and do some other housekeeping for the bash terminal inside the container, but the changes won't take effect until you exit and re-enter the container. If you're impatient, just run this command:
 ```bash
 source ~/.bashrc
 ```
 
-- To clone all of the repositories we're currently working in, run this command:
+- To clone all of the repositories we're currently working in, run these commands:
 ```bash
+eval `ssh-agent`
+ssh-add
 vcs import --input dev-repos.yaml
 ```
 
