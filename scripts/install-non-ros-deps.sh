@@ -35,7 +35,7 @@ install_osqp_eigen() {
     sudo apt-get install -y libeigen3-dev
 
     mkdir /tmp/osqp-eigen
-    curl -L https://github.com/robotology/osqp-eigen/archive/refs/tags/v$VERSION.tar.gz | tar -xvf -C /tmp/
+    curl -L https://github.com/robotology/osqp-eigen/archive/refs/tags/v$VERSION.tar.gz | tar -xz -C /tmp/
     cd /tmp/osqp-eigen-$VERSION
     mkdir build
     cd build
