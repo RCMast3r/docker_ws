@@ -69,3 +69,6 @@ cd $WS_DIR
 install_osqp_eigen
 
 cd $WS_DIR
+install_gtsam
+
+cd $WS_DIR
