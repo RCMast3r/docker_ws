@@ -31,9 +31,8 @@ install_osqp() {
 
 install_osqp_eigen() {
     VERSION="0.7.0"
-
+``
     rm -rf /tmp/osqp-eigen-$VERSION
-
     sudo apt-get install -y libeigen3-dev
 
     mkdir /tmp/osqp-eigen
@@ -44,6 +43,21 @@ install_osqp_eigen() {
     cmake ..
     make -j$(nproc)
     sudo make install
+}
+
+install_gtsam() {
+  VERSION="4.2a7"
+  
+  rm -rf /tmp/gtsam
+  mkdir /tmp/gtsam
+
+  curl -L https://github.com/borglab/gtsam/archive/refs/tags/$VERSION.tar.gz | tar -xz -C /tmp/
+  cd /tmp/gtsam
+  mkdir build
+  cd build
+  cmake .. -DGTSAM_USE_SYSTEM_EIGEN=ON
+  make -j$(nproc)
+  sudo make install
 }
 
 sudo apt-get update
