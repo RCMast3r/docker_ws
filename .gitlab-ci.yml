@@ -37,7 +37,11 @@ build:
   script:
     - IMAGE_BASE="$IMAGE_NAME_BASE/ros-base"
     - IMAGE_DEV="$IMAGE_NAME_BASE/ros-dev"
-    - docker build --ssh default -t $IMAGE_BASE:latest -t $IMAGE_BASE:humble -t $IMAGE_BASE:$CI_COMMIT_SHORT_SHA -f .docker/base.Dockerfile .
-    - docker build --ssh default -t $IMAGE_DEV:latest -t $IMAGE_DEV:humble -t $IMAGE_DEV:$CI_COMMIT_SHORT_SHA -f .docker/dev.Dockerfile .
-    - if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then docker push --all-tags $IMAGE_BASE; fi
-    - if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then docker push --all-tags $IMAGE_DEV; fi
+    - BASE_TAGS="-t $IMAGE_BASE:$CI_COMMIT_SHORT_SHA"
+    - DEV_TAGS="-t $IMAGE_DEV:$CI_COMMIT_SHORT_SHA"
+    - if [[ $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH ]]; then BASE_TAGS="$BASE_TAGS -t $IMAGE_BASE:latest -t $IMAGE_BASE:humble"; fi
+    - if [[ $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH ]]; then DEV_TAGS="$DEV_TAGS -t $IMAGE_DEV:latest -t $IMAGE_DEV:humble"; fi
+    - docker build --ssh default $BASE_TAGS -f .docker/base.Dockerfile .
+    - docker build --ssh default $DEV_TAGS -f .docker/dev.Dockerfile .
+    - docker push --all-tags $IMAGE_BASE
+    - docker push --all-tags $IMAGE_DEV
