@@ -31,7 +31,6 @@ install_osqp() {
 
 install_osqp_eigen() {
     VERSION="0.7.0"
-``
     rm -rf /tmp/osqp-eigen-$VERSION
     sudo apt-get install -y libeigen3-dev
 
