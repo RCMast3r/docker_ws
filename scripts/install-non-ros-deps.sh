@@ -36,7 +36,7 @@ install_osqp_eigen() {
     sudo apt-get install -y libeigen3-dev
 
     mkdir /tmp/osqp-eigen
-    curl -L https://github.com/robotology/osqp-eigen/archive/refs/tags/v$VERSION.tar.gz | tar -xz -C /tmp/
+    curl -L https://github.com/robotology/osqp-eigen/archive/refs/tags/v$VERSION.tar.gz | tar -xvf -C /tmp/
     cd /tmp/osqp-eigen-$VERSION
     mkdir build
     cd build
@@ -46,13 +46,13 @@ install_osqp_eigen() {
 }
 
 install_gtsam() {
-  VERSION="4.2a7"
+  VERSION="4.1.1"
   
   rm -rf /tmp/gtsam
   mkdir /tmp/gtsam
 
-  curl -L https://github.com/borglab/gtsam/archive/refs/tags/$VERSION.tar.gz | tar -xz -C /tmp/
-  cd /tmp/gtsam
+  curl -L https://github.com/borglab/gtsam/archive/refs/tags/$VERSION.tar.gz | tar -xz -C /tmp
+  cd /tmp/gtsam-$VERSION
   mkdir build
   cd build
   cmake .. -DGTSAM_USE_SYSTEM_EIGEN=ON
