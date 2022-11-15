@@ -57,8 +57,8 @@ install_gtsam() {
 
 sudo apt-get update
 
-cd $WS_DIR
-install_osqp
+# cd $WS_DIR
+# install_osqp
 
 cd $WS_DIR
 install_osqp_eigen
