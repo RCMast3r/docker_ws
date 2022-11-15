@@ -49,14 +49,10 @@ install_gtsam() {
   
   rm -rf /tmp/gtsam
   mkdir /tmp/gtsam
-
-  curl -L https://github.com/borglab/gtsam/archive/refs/tags/$VERSION.tar.gz | tar -xz -C /tmp
-  cd /tmp/gtsam-$VERSION
-  mkdir build
-  cd build
-  cmake .. -DGTSAM_USE_SYSTEM_EIGEN=ON
-  make -j$(nproc)
-  sudo make install
+  cd /tmp/gtsam
+  wget https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  sudo dpkg -i ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  
 }
 
 sudo apt-get update
