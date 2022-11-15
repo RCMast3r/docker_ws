@@ -15,19 +15,18 @@ SCRIPT_DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 WS_DIR=$(readlink -f "$SCRIPT_DIR/..")
 
 install_osqp() {
-    # VERSION="0.6.2"
+    VERSION="0.6.2"
 
-    # rm -rf /tmp/osqp
+    rm -rf /tmp/osqp
 
-    # curl -L https://github.com/osqp/osqp/releases/download/v$VERSION/complete_sources.tar.gz | tar -xz -C /tmp
-    # cd /tmp/osqp
-    # mkdir build
-    # cd build
-    # pwd
-    # cmake -G "Unix Makefiles" ..
-    # cmake --build . -j$(nproc)
-    # sudo cmake --build . --target install
-    sudo apt-get install ros-humble-osqp-vendor
+    curl -L https://github.com/osqp/osqp/releases/download/v$VERSION/complete_sources.tar.gz | tar -xz -C /tmp
+    cd /tmp/osqp
+    mkdir build
+    cd build
+    pwd
+    cmake -G "Unix Makefiles" ..
+    cmake --build . -j$(nproc)
+    sudo cmake --build . --target install
 }
 
 install_osqp_eigen() {
