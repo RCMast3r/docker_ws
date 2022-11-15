@@ -31,9 +31,7 @@ install_osqp() {
 
 install_osqp_eigen() {
     VERSION="0.7.0"
-
     rm -rf /tmp/osqp-eigen-$VERSION
-
     sudo apt-get install -y libeigen3-dev
 
     mkdir /tmp/osqp-eigen
@@ -46,6 +44,17 @@ install_osqp_eigen() {
     sudo make install
 }
 
+install_gtsam() {
+  VERSION="4.1.1"
+  
+  rm -rf /tmp/gtsam
+  mkdir /tmp/gtsam
+  cd /tmp/gtsam
+  wget https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  sudo dpkg -i ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  
+}
+
 sudo apt-get update
 
 cd $WS_DIR
@@ -53,5 +62,8 @@ install_osqp
 
 cd $WS_DIR
 install_osqp_eigen
+
+cd $WS_DIR
+install_gtsam
 
 cd $WS_DIR

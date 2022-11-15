@@ -25,6 +25,7 @@ RUN mkdir -p -m 0700 ~/.ssh && \
 RUN --mount=type=ssh \
     mkdir -p /tmp/voltron_ws/src && cd /tmp/voltron_ws/ && vcs import --shallow --recursive -w 1 src < dev-repos.yaml
 
+RUN ldconfig
 RUN /tmp/voltron_ws/scripts/install-non-ros-deps.sh
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \

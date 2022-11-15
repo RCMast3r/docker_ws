@@ -6,7 +6,7 @@ repositories:
   src/pointcloud-to-costmap:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud-to-costmap.git
-    version: ros2
+    version: master
   src/pointcloud_cone_detection:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud_cone_detection.git
