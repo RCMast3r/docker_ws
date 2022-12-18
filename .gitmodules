@@ -1,0 +1,3 @@
+[submodule "scripts/x11docker"]
+	path = scripts/x11docker
+	url = https://github.com/mviereck/x11docker.git
