@@ -8,6 +8,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
   --mount=type=cache,target=/var/lib/apt,sharing=locked \
   apt-get update && \
+  yes | unminimize && \
   apt-get install -y xinit xauth xclip x11-xserver-utils x11-utils weston xwayland xdotool locales dbus \
                      mesa-utils mesa-utils-extra vainfo \
                      libxv1 va-driver-all vdpau-driver-all \
