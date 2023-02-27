@@ -50,9 +50,18 @@ install_gtsam() {
   rm -rf /tmp/gtsam
   mkdir /tmp/gtsam
   cd /tmp/gtsam
-  wget https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  curl -L https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
   sudo dpkg -i ros-humble-gtsam_4.1.0-0jammy_amd64.deb
   
+}
+
+install_foxglove() {
+  VERSION="1.42.1"
+  rm -rf /tmp/foxglove-$VERSION
+  mkdir /tmp/foxglove-$VERSION
+  cd /tmp/foxglove-$VERSION
+  wget https://github.com/foxglove/studio/releases/download/v$VERSION/foxglove-studio-$VERSION-linux-amd64.deb
+  sudo dpkg -i foxglove-studio-$VERSION-linux-amd64.deb
 }
 
 sudo apt-get update
@@ -65,5 +74,8 @@ install_osqp_eigen
 
 cd $WS_DIR
 install_gtsam
+
+cd $WS_DIR
+install_foxglove
 
 cd $WS_DIR
