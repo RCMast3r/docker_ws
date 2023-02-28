@@ -50,7 +50,7 @@ install_gtsam() {
   rm -rf /tmp/gtsam
   mkdir /tmp/gtsam
   cd /tmp/gtsam
-  curl -L https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
+  wget https://raw.githubusercontent.com/RCMast3r/evt-debs/main/ros-humble-gtsam_4.1.0-0jammy_amd64.deb
   sudo dpkg -i ros-humble-gtsam_4.1.0-0jammy_amd64.deb
   
 }
