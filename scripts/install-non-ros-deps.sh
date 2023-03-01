@@ -55,6 +55,15 @@ install_gtsam() {
   
 }
 
+install_foxglove() {
+  VERSION="1.42.1"
+  rm -rf /tmp/foxglove-$VERSION
+  mkdir /tmp/foxglove-$VERSION
+  cd /tmp/foxglove-$VERSION
+  wget https://github.com/foxglove/studio/releases/download/v$VERSION/foxglove-studio-$VERSION-linux-amd64.deb
+  sudo dpkg -i foxglove-studio-$VERSION-linux-amd64.deb
+}
+
 sudo apt-get update
 
 cd $WS_DIR
@@ -65,5 +74,8 @@ install_osqp_eigen
 
 cd $WS_DIR
 install_gtsam
+
+cd $WS_DIR
+install_foxglove
 
 cd $WS_DIR

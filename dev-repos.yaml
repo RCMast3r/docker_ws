@@ -40,3 +40,15 @@ repositories:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
     version: master
+  src/voltron_msgs:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_msgs.git
+    version: master
+  src/simple_ouster_driver:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/simple_ouster_driver.git
+    version: master
+  src/vectornav:
+    type: git
+    url: https://github.com/dawonn/vectornav.git
+    version: ros2
