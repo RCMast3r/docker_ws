@@ -104,7 +104,7 @@ source ~/.bashrc
 ```bash
 eval `ssh-agent`
 ssh-add
-vcs import --input dev-repos.yaml
+vcs import --input dev-repos.yaml --recursive
 ```
 
 > **NOTE:** YOU MIGHT HAVE TO RUN THIS COMMAND TWICE IF ON KSU WIFI; They limit SSH tunnels for some reason and VCS clones using SSH. This is the error you will see if that's the case:
