@@ -125,4 +125,4 @@ source /opt/ros/humble/setup.bash
 EOF
 
 echo "[[ -f $WS_DIR/install/setup.bash ]] && source $WS_DIR/install/setup.bash" >> $HOME/.bashrc
-echo "[[ -f $WS_DIR/defaults.yaml ]] && export COLCON_DEFAULTS_FILE=\"$WS_DIR\" " >> $HOME/.bashrc
+echo "[[ -f $WS_DIR/defaults.yaml ]] && export COLCON_DEFAULTS_FILE=\"$WS_DIR/defaults.yaml\" " >> $HOME/.bashrc
