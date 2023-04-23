@@ -52,3 +52,11 @@ repositories:
     type: git
     url: https://github.com/dawonn/vectornav.git
     version: ros2
+  src/ackermationn:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/ackermationn.git 
+    version: master
+  src/udp_server_node:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/udp_server_node.git
+    version: master
