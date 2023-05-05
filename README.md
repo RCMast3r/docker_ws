@@ -47,7 +47,7 @@ cat NAME_OF_YOUR_KEY_FILE.pub
 # Stage 3 - Cloning the Workspace:
 Open your bash terminal and enter this command:
 ```bash
-git clone git@gitlab.com:KSU_EVT/autonomous-software/voltron_ws.git
+git clone git@gitlab.com:KSU_EVT/autonomous-software/voltron_ws.git --recurse-submodules
 ```
 
 Type this command to enter the directory in which we just cloned the workspace:
