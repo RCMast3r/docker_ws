@@ -1,11 +1,35 @@
 repositories:
+  src/ackermationn:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/ackermationn.git
+    version: master
+  src/doublescan:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/doublescan.git
+    version: master
+  src/gokart-simulation:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/gokart-simulation.git
+    version: main
+  src/simple_ouster_driver:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/simple_ouster_driver.git
+    version: master
   src/line_maker2:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/line_maker2.git
     version: master
+  src/oakd-detection-node:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/oakd-detection-node.git
+    version: master
   src/pointcloud-to-costmap:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud-to-costmap.git
+    version: master
+  src/pointcloud_cluster:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/pointcloud_cluster.git
     version: master
   src/pointcloud_cone_detection:
     type: git
@@ -24,6 +48,14 @@ repositories:
     url: git@gitlab.com:KSU_EVT/autonomous-software/race-line-maker.git
     version: slime_trail_cleaner
     version: master
+  src/udp_server_node:
+    type: git
+    url: git@gitlab.com:KSU_EVT/autonomous-software/udp_server_node.git
+    version: master
+  src/vectornav:
+    type: git
+    url: git@gitlab.com:KSU_EVT/forks/vectornav.git
+    version: ros2
   src/voltron:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron.git
@@ -31,11 +63,7 @@ repositories:
   src/voltron_localization:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_localization.git
-    version: imu_transform_feat
-  src/gokart-simulation:
-    type: git
-    url: git@gitlab.com:KSU_EVT/autonomous-software/gokart-simulation.git
-    version: main
+    version: master
   src/voltron_mpc:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_mpc.git
@@ -43,20 +71,4 @@ repositories:
   src/voltron_msgs:
     type: git
     url: git@gitlab.com:KSU_EVT/autonomous-software/voltron_msgs.git
-    version: master
-  src/simple_ouster_driver:
-    type: git
-    url: git@gitlab.com:KSU_EVT/autonomous-software/simple_ouster_driver.git
-    version: master
-  src/vectornav:
-    type: git
-    url: https://github.com/dawonn/vectornav.git
-    version: ros2
-  src/ackermationn:
-    type: git
-    url: git@gitlab.com:KSU_EVT/autonomous-software/ackermationn.git 
-    version: master
-  src/udp_server_node:
-    type: git
-    url: git@gitlab.com:KSU_EVT/autonomous-software/udp_server_node.git
     version: master
